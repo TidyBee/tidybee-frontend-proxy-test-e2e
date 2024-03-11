@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 // Utiliser les routes définies dans le fichier apiRoutes.js
 const apiRoutes = require('./routes/apiRoutes');
-app.use('/Gateway', apiRoutes);
+app.use(apiRoutes);
 
 // Démarrage du serveur sur le port spécifié
 app.listen(port, () => {

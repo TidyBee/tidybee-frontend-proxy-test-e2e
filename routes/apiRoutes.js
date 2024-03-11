@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/getTextWidgetunused', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getTextWidgetunused', (req, res) => {
   const data = {
     title: 'unused',
     types: 'Number',
@@ -14,7 +14,7 @@ router.get('/getTextWidgetunused', (req, res) => {
   res.json(data);
 });
 
-router.get('/getTextWidgetbadname', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getTextWidgetbadname', (req, res) => {
   const data = {
     title: 'badname',
     types: 'Number',
@@ -27,7 +27,7 @@ router.get('/getTextWidgetbadname', (req, res) => {
   res.json(data);
 });
 
-router.get('/getTextWidgetduplicate', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getTextWidgetduplicate', (req, res) => {
   const data = {
     title: 'duplicate',
     types: 'Number',
@@ -40,7 +40,7 @@ router.get('/getTextWidgetduplicate', (req, res) => {
   res.json(data);
 });
 
-router.get('/getTextWidgetheavy', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getTextWidgetheavy', (req, res) => {
   const data = {
     title: 'heavy',
     types: 'Number',
@@ -53,7 +53,7 @@ router.get('/getTextWidgetheavy', (req, res) => {
   res.json(data);
 });
 
-router.get('/getTextWidgetstorage', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getTextWidgetstorage', (req, res) => {
   const data = {
     title: 'storage',
     types: 'Graph',
@@ -67,198 +67,219 @@ router.get('/getTextWidgetstorage', (req, res) => {
   res.json(data);
 });
 
-router.get('/getGradeWidget', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getGradeWidget', (req, res) => {
   const data = {
     grade: "B",
   };
   res.json(data);
 });
 
-router.get('/getGraphWidget', (req, res) => {
+router.get('/Gateway/dataProcessing/Widget/getGraphWidget', (req, res) => {
   const data = {
     series: [20, 32, 23, 15, 10],
   };
   res.json(data);
 });
 
-router.get('/getWidgetOverView', (req, res) => {
-  var data = [
+router.get('/proxy/get_files', (req, res) => {
+  const { amount, sort_by } = req.query;
+  var agent1 = [
       {
-          StatusCode: 200,
-          Content: JSON.stringify([{
-            pretty_path: "src/my_files.rs",
-            size: 21782,
-            last_modified: {
-                secs_since_epoch: 1706651511,
-                nanos_since_epoch: 396799014
-            },
-            tidy_score: {
-                misnamed: true,
-                heavy: true,
-                unused: false,
-                duplicated: false
-            }
+        StatusCode: 200,
+        Content: JSON.stringify([{
+          pretty_path: "src/my_files.rs",
+          size: 21782,
+          last_modified: {
+              secs_since_epoch: 1706651511,
+              nanos_since_epoch: 396799014
           },
-          {
-            pretty_path: "src/http_server.rs",
-            size: 5452,
-            last_modified: {
-                secs_since_epoch: 15651511,
-                nanos_since_epoch: 456898
-            },
-            tidy_score: {
-                misnamed: true,
-                heavy: true,
-                unused: false,
-                duplicated: false
-            }
-          },
-          {
-            pretty_path: "src/lib.rs",
-            size: 2406,
-            last_modified: {
-                secs_since_epoch: 511,
-                nanos_since_epoch: 96799
-            },
-            tidy_score: {
-                misnamed: true,
-                heavy: false,
-                unused: true,
-                duplicated: true
-            }
-          },
-          {
-            pretty_path: "src/awesome_code.rs",
-            size: 54321,
-            last_modified: {
-                secs_since_epoch: 1701511,
-                nanos_since_epoch: 9679914
-            },
-            tidy_score: {
-                misnamed: false,
-                heavy: true,
-                unused: true,
-                duplicated: false
-            }
-          },
-          {
-            pretty_path: "src/cool_module.rs",
-            size: 9876,
-            last_modified: {
-                secs_since_epoch: 170113511,
-                nanos_since_epoch: 963479914
-            },
-            tidy_score: {
-                misnamed: true,
-                heavy: false,
-                unused: true,
-                duplicated: false
-            }
-          },
-          {
-            pretty_path: "src/smart_logic.rs",
-            size: 3456,
-            last_modified: {
-                secs_since_epoch: 651511,
-                nanos_since_epoch: 396799014
-            },
-            tidy_score: {
-                misnamed: false,
-                heavy: true,
-                unused: false,
-                duplicated: true
-            }
-          },])
+          tidy_score: {
+              misnamed: true,
+              heavy: true,
+              unused: false,
+              duplicated: false
+          }
       },
       {
-          StatusCode: 200,
-          Content: JSON.stringify([    {
-            pretty_path: "src/innovative_code.rs",
-            size: 65432,
-            last_modified: {
-                secs_since_epoch: 6651511,
-                nanos_since_epoch: 39138765
-            },
-            tidy_score: {
-                misnamed: false,
-                heavy: true,
-                unused: true,
-                duplicated: false
-            }
-          },
-          {
-            pretty_path: "src/innovative_code.rs",
-            size: 65432,
-            last_modified: {
-                secs_since_epoch: 6651511,
-                nanos_since_epoch: 39138765
-            },
-            tidy_score: {
-                misnamed: false,
-                heavy: true,
-                unused: true,
-                duplicated: false
-            }
-          },
-          {
-            pretty_path: "src/creative_solution.rs",
-            size: 52,
-            last_modified: {
-                secs_since_epoch: 66,
-                nanos_since_epoch: 325
-            },
-            tidy_score: {
-                misnamed: true,
-                heavy: true,
-                unused: true,
-                duplicated: true
-            }
-          },
-          {
-            pretty_path: "src/efficient_algorithm.rs",
-            size: 8765,
-            last_modified: {
-                secs_since_epoch: 17066515,
-                nanos_since_epoch: 3967990
-            },
-            tidy_score: {
-                misnamed: false,
-                heavy: true,
-                unused: false,
-                duplicated: true
-            }
-          },
-          {
-            pretty_path: "src/user_friendly.rs",
-            size: 9876,
-            last_modified: {
-                secs_since_epoch: 17987615,
-                nanos_since_epoch: 399876
-            },
-            tidy_score: {
-                misnamed: true,
-                heavy: false,
-                unused: false,
-                duplicated: false
-            }
-          },
-          {
-            pretty_path: "src/feature_rich.rs",
-            size: 7654,
-            last_modified: {
-                secs_since_epoch: 6651511,
-                nanos_since_epoch: 6799014
-            },
-            tidy_score: {
-                misnamed: false,
-                heavy: true,
-                unused: true,
-                duplicated: false
-            }
-          },])    
+        pretty_path: "src/http_server.rs",
+        size: 5452,
+        last_modified: {
+            secs_since_epoch: 15651511,
+            nanos_since_epoch: 456898
+        },
+        tidy_score: {
+            misnamed: true,
+            heavy: true,
+            unused: false,
+            duplicated: false
+        }
+      },
+      {
+        pretty_path: "src/lib.rs",
+        size: 2406,
+        last_modified: {
+            secs_since_epoch: 511,
+            nanos_since_epoch: 96799
+        },
+        tidy_score: {
+            misnamed: true,
+            heavy: false,
+            unused: true,
+            duplicated: true
+        }
+      },
+      {
+        pretty_path: "src/awesome_code.rs",
+        size: 54321,
+        last_modified: {
+            secs_since_epoch: 1701511,
+            nanos_since_epoch: 9679914
+        },
+        tidy_score: {
+            misnamed: false,
+            heavy: true,
+            unused: true,
+            duplicated: false
+        }
+      },
+      {
+        pretty_path: "src/cool_module.rs",
+        size: 9876,
+        last_modified: {
+            secs_since_epoch: 170113511,
+            nanos_since_epoch: 963479914
+        },
+        tidy_score: {
+            misnamed: true,
+            heavy: false,
+            unused: true,
+            duplicated: false
+        }
+      },
+      {
+        pretty_path: "src/smart_logic.rs",
+        size: 3456,
+        last_modified: {
+            secs_since_epoch: 651511,
+            nanos_since_epoch: 396799014
+        },
+        tidy_score: {
+            misnamed: false,
+            heavy: true,
+            unused: false,
+            duplicated: true
+        }
+      },])    
       }
   ];
-  res.json(data);
+  var agent2 = [
+    {
+        StatusCode: 200,
+        Content: JSON.stringify([    {
+          pretty_path: "src/innovative_code.rs",
+          size: 65432,
+          last_modified: {
+              secs_since_epoch: 6651511,
+              nanos_since_epoch: 39138765
+          },
+          tidy_score: {
+              misnamed: false,
+              heavy: true,
+              unused: true,
+              duplicated: false
+          }
+        },
+        {
+          pretty_path: "src/innovative_code.rs",
+          size: 65432,
+          last_modified: {
+              secs_since_epoch: 6651511,
+              nanos_since_epoch: 39138765
+          },
+          tidy_score: {
+              misnamed: false,
+              heavy: true,
+              unused: true,
+              duplicated: false
+          }
+        },
+        {
+          pretty_path: "src/creative_solution.rs",
+          size: 52,
+          last_modified: {
+              secs_since_epoch: 66,
+              nanos_since_epoch: 325
+          },
+          tidy_score: {
+              misnamed: true,
+              heavy: true,
+              unused: true,
+              duplicated: true
+          }
+        },
+        {
+          pretty_path: "src/efficient_algorithm.rs",
+          size: 8765,
+          last_modified: {
+              secs_since_epoch: 17066515,
+              nanos_since_epoch: 3967990
+          },
+          tidy_score: {
+              misnamed: false,
+              heavy: true,
+              unused: false,
+              duplicated: true
+          }
+        },
+        {
+          pretty_path: "src/user_friendly.rs",
+          size: 9876,
+          last_modified: {
+              secs_since_epoch: 17987615,
+              nanos_since_epoch: 399876
+          },
+          tidy_score: {
+              misnamed: true,
+              heavy: false,
+              unused: false,
+              duplicated: false
+          }
+        },
+        {
+          pretty_path: "src/feature_rich.rs",
+          size: 7654,
+          last_modified: {
+              secs_since_epoch: 6651511,
+              nanos_since_epoch: 6799014
+          },
+          tidy_score: {
+              misnamed: false,
+              heavy: true,
+              unused: true,
+              duplicated: false
+          }
+      },])    
+    }
+  ];
+
+  const proxy = [
+    { Responses: [{ StatusCode: 200, Content: agent1[0].Content },{ StatusCode: 200, Content: agent2[0].Content }] }
+  ];
+  
+  const responseData = {
+    handler: {
+      deleteProperty: (target, key) => {},
+      get: (target, key, receiver) => {},
+      has: (target, key) => {},
+      ownKeys: (target) => {},
+      set: (target, key, value, receiver) => {},
+    },
+    target: {
+      Responses: proxy[0].Responses,
+    },
+  };
+  
+  res.json({...responseData.handler, ...responseData.target});
 });
 
 
